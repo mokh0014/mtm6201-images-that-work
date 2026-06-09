@@ -148,18 +148,23 @@ a {
 /* ============================================================
    HERO SECTION
    
-   Currently using a CSS background image.
+   The CSS background image was removed so the hero can use
+   srcset from a real image element.
    ============================================================ */
 .hero {
   position: relative;
   min-height: 90vh;
   display: flex;
   align-items: flex-end;
+}
 
-  /* BROKEN: This should not be a background image */
-  background-image: url('../images/hero.png');
-  background-size: cover;
-  background-position: center;
+/* Task 3: Places the responsive hero image behind the overlay and text. */
+.hero__trail-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero::after {
@@ -388,7 +393,8 @@ a {
 /* ============================================================
    LANDSCAPE BANNER
   
-   Currently using a CSS background image.
+   The CSS background image was removed so picture can handle
+   the mobile and desktop crop choices.
    ============================================================ */
 .landscape-banner {
   position: relative;
@@ -396,11 +402,19 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  /* BROKEN: This should not be a background image */
-  background-image: url('../images/landscape-banner.png');
-  background-size: cover;
-  background-position: center;
+/* Task 7: Stretches the active banner crop across the whole section. */
+.banner__responsive-crop,
+.banner__responsive-crop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.banner__responsive-crop img {
+  object-fit: cover;
 }
 
 .landscape-banner::before {
@@ -408,11 +422,12 @@ a {
   position: absolute;
   inset: 0;
   background: rgba(20, 20, 18, 0.65);
+  z-index: 1;
 }
 
 .landscape-banner__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   padding: 4rem 2rem;
   max-width: 700px;
